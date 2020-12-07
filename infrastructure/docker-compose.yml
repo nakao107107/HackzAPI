@@ -1,0 +1,37 @@
+version: "3"
+services:
+  db:
+    container_name: hackz_db
+    image: mysql:5.6
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      - MYSQL_USER=hackz
+      - MYSQL_ROOT_USER=root
+      - MYSQL_PASSWORD=password
+      - MYSQL_ROOT_PASSWORD=password
+      - TZ=Asia/Tokyo
+    volumes:
+      - ./datavol:/var/lib/mysql
+    ports:
+      - "13306:3306"
+
+  api:
+    container_name: hackz_api
+    build:
+      context: ../
+      dockerfile: infrastructure/Dockerfile
+    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    volumes:
+      - ../:/app
+    ports:
+      - "13000:3000"
+    depends_on:
+      - db
+    tty: true
+    stdin_open: true
+    environment:
+      - TZ=Asia/Tokyo
+
+volumes:
+  datavol:
+    driver: local
