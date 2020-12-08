@@ -1,7 +1,6 @@
 class CreateTables < ActiveRecord::Migration[6.0]
   def change
-    create_table :meetings, id: false do |t|
-      t.string :id
+    create_table :meetings, id: :string do |t|
       t.string :topic
       t.datetime :start_time
       t.datetime :end_time

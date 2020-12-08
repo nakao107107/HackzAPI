@@ -20,8 +20,7 @@ ActiveRecord::Schema.define(version: 2020_12_08_120943) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "meetings", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "id"
+  create_table "meetings", id: :string, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "topic"
     t.datetime "start_time"
     t.datetime "end_time"
