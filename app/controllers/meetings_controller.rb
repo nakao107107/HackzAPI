@@ -1,4 +1,5 @@
 class MeetingsController < ApplicationController
+  before_action :check_session
   before_action :set_meeting, only: [:show]
   def index
     render json: Meeting.all, status: :ok
@@ -9,7 +10,7 @@ class MeetingsController < ApplicationController
   end
 
   def create
-    meeting = Meeting.create(meeting_params)
+    meeting = Meeting.create(meeting_params.merge({user_id: @user.id}))
     render json: meeting, status: :created
   end
 
