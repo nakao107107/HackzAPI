@@ -16,7 +16,7 @@ class CreateTables < ActiveRecord::Migration[6.0]
       t.timestamps
     end
 
-    create_table :users do |t|
+    create_table :users, id: :string do |t|
       t.string :email
       t.string :password_digest
       t.string :name

@@ -27,8 +27,6 @@ class ChimeService
                                        external_user_id: attendee_id
                                    })
     resp.to_h
-  rescue StandardError
-    raise StandardError, '参加者の作成に失敗しました'
   end
 
   # 特定idのmeetingが存在するか調べる

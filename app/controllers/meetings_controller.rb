@@ -1,6 +1,6 @@
 class MeetingsController < ApplicationController
   before_action :check_session
-  before_action :set_meeting, only: [:show]
+  before_action :set_meeting, only: [:show, :attend]
   def index
     render json: Meeting.all, status: :ok
   end
@@ -14,9 +14,13 @@ class MeetingsController < ApplicationController
     render json: meeting, status: :created
   end
 
+  def attend
+    @user.attend_meeting(@meeting.id)
+  end
+
   private
   def set_meeting
-    @meeting = Meeting.find(params[:id])
+    @meeting = Meeting.find(params[:meeting_id])
   end
   def meeting_params
     params.permit(:topic, :start_time, :end_time)
