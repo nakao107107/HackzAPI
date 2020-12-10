@@ -6,6 +6,12 @@ class RoomsController < ApplicationController
     meeting_service.create_room
   end
 
+  def show
+    room = meeting_service.fetch_room
+    attendee = meeting_service.fetch_attendee(@user.id)
+    render json: { room: room, attendee: attendee }, status: 200
+  end
+
   private
 
   def meeting_service
