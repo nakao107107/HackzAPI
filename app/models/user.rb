@@ -12,4 +12,9 @@ class User < ApplicationRecord
   def set_id
     self.id = 'us' + SecureRandom.alphanumeric(10) while id.blank? || self.class.find_by(id: id).present?
   end
+
+  def login
+    self.access_token = SecureRandom.hex
+    save!
+  end
 end

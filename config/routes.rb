@@ -4,4 +4,9 @@ Rails.application.routes.draw do
     resource :room, only: [:create, :show]
     post 'attend' => 'meetings#attend'
   end
+  resources :users do
+    collection do
+      post 'login' => 'users#login'
+    end
+  end
 end
