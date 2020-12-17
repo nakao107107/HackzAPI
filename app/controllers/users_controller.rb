@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :check_session
+  before_action :check_session, only: [:profile]
   def login
     user = User.find_by({email: params[:email]})
     raise StandardError, 'ログインIDかpasswordが違います' if user.nil? || !user.authenticate(params[:password])
