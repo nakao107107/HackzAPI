@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :users do
     collection do
       post 'login' => 'users#login'
+      get 'profile' => 'users#profile'
     end
   end
 end
