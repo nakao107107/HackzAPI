@@ -10,4 +10,5 @@ Rails.application.routes.draw do
       get 'profile' => 'users#profile'
     end
   end
+  get '/files/presigned-url' => 'files#presigned_url'
 end
