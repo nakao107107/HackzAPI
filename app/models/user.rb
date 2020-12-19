@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   before_create :set_id
   has_secure_password
+  has_one :attendee
   def attend_meeting(meeting_id)
     chime_service = ChimeService.new
     resp = chime_service.create_attendee(Meeting.find(meeting_id).chime_meeting_id, id)
