@@ -16,7 +16,7 @@ test:
 
 production:
   <<: *default
-  database: Bizibl
+  database: hackz
   host: <%= ENV['HACKZ_DB_HOST'] %>
   username: <%= ENV['HACKZ_DB_USERNAME'] %>
   password: <%= ENV['HACKZ_DB_PASSWORD'] %>
