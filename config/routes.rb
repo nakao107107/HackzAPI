@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   resources :users do
     collection do
       post 'login' => 'users#login'
-      get 'profile' => 'users#profile'
+      post 'signup' => 'users#signup'
+      resource :profile, only: [:show, :update]
     end
   end
   get '/files/presigned-url' => 'files#presigned_url'

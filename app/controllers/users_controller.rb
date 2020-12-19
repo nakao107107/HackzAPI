@@ -9,8 +9,13 @@ class UsersController < ApplicationController
     render json: { error: e.message }, status: 401
   end
 
-  def profile
-    #TODO sirializerの導入
-    render json: @user, status: :ok
+  def signup
+    user = User.find_by({email: params[:email]})
+    raise StandardError, 'このメールアドレスはすでに使用されています' if user
+    user = User.create!({email: params[:email], password: params[:password]})
+    user.login
+    render json: {access_token: user.access_token}, status: :ok
+  rescue StandardError => e
+    render json: { error: e.message }, status: 401
   end
 end
