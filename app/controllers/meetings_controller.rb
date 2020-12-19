@@ -2,7 +2,7 @@ class MeetingsController < ApplicationController
   before_action :check_session
   before_action :set_meeting, only: [:attend]
   def index
-    render json: Meeting.where(user_id: @user.id), status: :ok
+    render json: Meeting.where(user_id: @user.id).order(id: "DESC"), status: :ok
   end
 
   def show
