@@ -1,12 +1,12 @@
 class MeetingsController < ApplicationController
   before_action :check_session
-  before_action :set_meeting, only: [:show, :attend]
+  before_action :set_meeting, only: [:attend]
   def index
     render json: Meeting.where(user_id: @user.id), status: :ok
   end
 
   def show
-    render json: @meeting, status: :ok
+    render json: Meeting.find(params[:id]), status: :ok
   end
 
   def create
