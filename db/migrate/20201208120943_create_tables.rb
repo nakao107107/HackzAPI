@@ -21,6 +21,7 @@ class CreateTables < ActiveRecord::Migration[6.0]
       t.string :password_digest
       t.string :name
       t.string :access_token
+      t.string :plan
       t.timestamps
     end
   end

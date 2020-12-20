@@ -12,6 +12,6 @@ class ProfilesController < ApplicationController
 
   private
   def profile_params
-    params.permit(:name)
+    params.permit(:name, :plan)
   end
 end
